@@ -6,7 +6,7 @@ import tseslint from "typescript-eslint";
 import checkFile from "eslint-plugin-check-file";
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  { ignores: ["dist", "node_modules"] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
@@ -34,6 +34,12 @@ export default tseslint.config(
         "error",
         { "**/*.{ts,tsx}": "KEBAB_CASE" }
       ]
+    }
+  },
+  {
+    files: ["vite.config.ts"],
+    rules: {
+      "check-file/filename-naming-convention": "off"
     }
   }
 );

@@ -1,5 +1,6 @@
-const Login = function () {
+const LoginForm = function () {
   return <p>hello</p>;
 };
 
-export default Login;
+export default LoginForm;
+

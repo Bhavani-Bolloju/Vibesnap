@@ -1,5 +1,7 @@
+import AppRoutes from "./routes/app-routes";
+
 function App() {
-  return <h1 className="">vibe snap</h1>;
+  return <AppRoutes />;
 }
 
 export default App;
