@@ -16,9 +16,62 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)"
+      },
+      keyframes: {
+        ripple: {
+          "0%": {
+            transform: "scale(0.5)",
+            opacity: "0"
+          },
+          "25%": {
+            opacity: "1"
+          },
+          "100%": {
+            transform: "scale(2.5)",
+            opacity: "0"
+          }
+        },
+        slideInFadeOut: {
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "10%": { transform: "translateX(0)", opacity: "1" },
+          "90%": { opacity: "1" },
+          "100%": { transform: "translateX(100%)", opacity: "0" }
+        }
+      },
+
+      animation: {
+        ripple: "ripple 2s infinite",
+        slideInFadeOut: 'slideInFadeOut 3s ease-in-out',
       }
     }
   },
-  plugins: [require("tailwindcss-animate")]
-};
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".before-element": {
+          content: '""',
+          display: "block",
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          "border-radius": "50%",
+          border: "2px solid ",
+          opacity: "0"
+        },
+        ".after-element": {
+          content: '""',
+          display: "block",
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          "border-radius": "50%",
+          border: "2px solid",
+          opacity: "0"
+        }
+      };
 
+      addUtilities(newUtilities, ["before", "after"]);
+    }
+  ]
+};

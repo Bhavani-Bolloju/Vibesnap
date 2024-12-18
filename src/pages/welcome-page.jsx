@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Gallery from "@/components/auth/gallery";
 import GoogleLogin from "@/features/auth/google-login";
 import logo from "@assets/vibespan.svg";
+import { Link } from "react-router";
 
 const WelcomePage = function () {
   return (
@@ -9,7 +10,6 @@ const WelcomePage = function () {
       <Gallery />
       <div className="w-full absolute top-[50vh] bg-white h-[50vh] rounded-tr-[100px] rounded-tl-[100px] ">
         <div className="py-10  flex items-center flex-col">
-          {/* <div></div> */}
           <h1 className="flex items-center gap-2">
             <img src={logo} alt="" />
             <span className="font-karla text-[28px] font-semibold">
@@ -19,6 +19,7 @@ const WelcomePage = function () {
           <p className="text-base mb-10">
             Moments That Matter, Shared Forever.
           </p>
+
           <div className="text-center">
             <GoogleLogin />
             <div className="my-5 flex items-center gap-5">
@@ -26,14 +27,12 @@ const WelcomePage = function () {
               <span className="font-karla text-base">or</span>
               <span className="w-full h-[.5px] bg-gray-800/60"></span>
             </div>
-
-            <a
-              href="#"
+            <Link
+              to="/auth"
               className="font-semibold hover:border-b-2 hover:border-gray-900 "
             >
               Login/signup with email
-            </a>
-            {/* <Button variant="outline">Login/signup with email</Button> */}
+            </Link>
           </div>
         </div>
       </div>
@@ -42,4 +41,3 @@ const WelcomePage = function () {
 };
 
 export default WelcomePage;
-
