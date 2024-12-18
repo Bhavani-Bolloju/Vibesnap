@@ -10,7 +10,8 @@ export default {
         primary: "#292929"
       },
       fontFamily: {
-        karla: ["Karla", "sans-serif"]
+        karla: ["Karla", "sans-serif"],
+        "kumbh-sans": ["Kumbh Sans", "sans-serif"]
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -41,7 +42,7 @@ export default {
 
       animation: {
         ripple: "ripple 2s infinite",
-        slideInFadeOut: 'slideInFadeOut 3s ease-in-out',
+        slideInFadeOut: "slideInFadeOut 3s ease-in-out"
       }
     }
   },

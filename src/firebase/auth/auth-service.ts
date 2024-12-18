@@ -1,5 +1,5 @@
 import {
-  // signInWithEmailAndPassword,
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword
 } from "firebase/auth";
 
@@ -23,6 +23,17 @@ export const register = async function (email: string, password: string) {
   }
 };
 
+export const loginWithEmailAndPassword = async function (
+  email: string,
+  password: string
+) {
+  try {
+    const login = await signInWithEmailAndPassword(auth, email, password);
+    console.log(login);
+  } catch (error: unknown) {
+    if (error instanceof FirebaseError) {
+      throw error;
+    }
+  }
+};
 
-
-// export const loginWithEmailAndPassword = function(){}
