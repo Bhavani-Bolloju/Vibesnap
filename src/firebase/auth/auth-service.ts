@@ -1,6 +1,8 @@
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "firebase/auth";
 
 import { FirebaseError } from "firebase/app";
@@ -30,6 +32,20 @@ export const loginWithEmailAndPassword = async function (
   try {
     const login = await signInWithEmailAndPassword(auth, email, password);
     console.log(login);
+  } catch (error: unknown) {
+    if (error instanceof FirebaseError) {
+      throw error;
+    }
+  }
+};
+
+const googleProvider = new GoogleAuthProvider();
+
+export const signInWithGoogle = async function () {
+  try {
+    const res = await signInWithPopup(auth, googleProvider);
+    const user = res.user;
+    return user;
   } catch (error: unknown) {
     if (error instanceof FirebaseError) {
       throw error;

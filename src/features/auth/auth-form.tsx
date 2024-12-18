@@ -56,7 +56,7 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
 
         //add user to the firestore
         if (user && user?.uid && user?.email) {
-          addUser(user?.uid, inputValues.name, user?.email);
+          addUser(user?.uid, inputValues.name, user?.email, "local");
 
           //show a popup on success
           setOnSuccess("🥳🥳 You're all set! Thanks for joining us");
