@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "@assets/vibespan.svg";
+import ForgotPassword from "@/features/auth/forgot-password";
 
 import AuthForm from "@/features/auth/auth-form";
 const AuthPage = function () {
@@ -13,10 +14,11 @@ const AuthPage = function () {
       <p className="text-base self-center mb-10 ">
         Moments That Matter, Shared Forever.
       </p>
-      <div className="w-[550px] rounded-lg px-20 py-10 leading-4 border-2">
+      <div className="w-[550px] rounded-lg px-20 py-10 leading-4 border-2 flex flex-col">
         <h2 className="font-bold text-xl mb-1">
           {signup ? "Sign Up" : "Login"}
         </h2>
+
         <div>
           {signup
             ? "Already have an account? "
@@ -31,7 +33,9 @@ const AuthPage = function () {
             {signup ? "Login" : "Sign up"}
           </button>
         </div>
-        <AuthForm key={signup ? "signup" : "login"} signup={signup}></AuthForm>
+        <AuthForm key={signup ? "signup" : "login"} signup={signup} />
+
+        {!signup && <ForgotPassword />}
       </div>
     </div>
   );

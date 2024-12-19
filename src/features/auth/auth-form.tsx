@@ -11,11 +11,11 @@ import {
 import { addUser } from "@/firebase/database/db-services";
 
 import { FirebaseError } from "firebase/app";
-
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import Spinner from "@/components/ui/spinner";
 
 import { useNavigate } from "react-router";
+
+import { toastSuccess, toastError } from "@/components/ui/toast";
 
 const AuthForm = function ({ signup }: { signup: boolean }) {
   const formInputValues = {
@@ -26,16 +26,11 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
 
   const [inputValues, setInputValues] = useState(formInputValues);
 
-  const [onError, setOnError] = useState<null | string>(null);
   const [onLoad, setOnLoad] = useState(false);
-  const [onSuccess, setOnSuccess] = useState<null | string>(null);
 
   const navigate = useNavigate();
 
   const inputHandler = function (e: React.ChangeEvent<HTMLInputElement>) {
-    if (onError) {
-      setOnError(null);
-    }
     setInputValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -59,7 +54,7 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
           addUser(user?.uid, inputValues.name, user?.email, "local");
 
           //show a popup on success
-          setOnSuccess("🥳🥳 You're all set! Thanks for joining us");
+          toastSuccess("You're all set! Thanks for joining us");
 
           //redirect user to feed screen
           setTimeout(() => {
@@ -73,7 +68,8 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
         );
 
         //show a popup on success
-        setOnSuccess("You're logged in!");
+
+        toastSuccess("You're logged in!");
 
         //redirect user to feed screen
         setTimeout(() => {
@@ -82,7 +78,7 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
       }
     } catch (error) {
       if (error instanceof FirebaseError) {
-        setOnError(error.message);
+        toastError(error.message);
       }
     } finally {
       setOnLoad(false);
@@ -131,11 +127,7 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
             value={inputValues.password}
           />
         </div>
-        {!signup && (
-          <button className="self-end hover:text-link border-b border-transparent hover:border-link">
-            Forgot your password?
-          </button>
-        )}
+
         <br />
         <Button variant="default" className="uppercase">
           {signup ? "Sign Up" : "Login"}
@@ -146,19 +138,6 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
         <div className="absolute rounded-md w-[100px] h-[100px] bg-black/5  top-[40%] left-1/2 translate-x-[-50%] ">
           <Spinner />
         </div>
-      )}
-      {onSuccess && (
-        <Alert variant="default" className="absolute top-0 right-10 w-[400px]">
-          <AlertDescription>{onSuccess}</AlertDescription>
-        </Alert>
-      )}
-      {onError && (
-        <Alert
-          variant="destructive"
-          className="absolute top-0 right-10 w-[400px]"
-        >
-          <AlertDescription>{onError}</AlertDescription>
-        </Alert>
       )}
     </>
   );

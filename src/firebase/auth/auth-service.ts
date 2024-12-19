@@ -2,7 +2,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  sendPasswordResetEmail
 } from "firebase/auth";
 
 import { FirebaseError } from "firebase/app";
@@ -46,6 +47,18 @@ export const signInWithGoogle = async function () {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
     return user;
+  } catch (error: unknown) {
+    if (error instanceof FirebaseError) {
+      throw error;
+    }
+  }
+};
+
+export const passwordReset = async function (email: string) {
+  try {
+    const res = await sendPasswordResetEmail(auth, email);
+
+    console.log(res);
   } catch (error: unknown) {
     if (error instanceof FirebaseError) {
       throw error;

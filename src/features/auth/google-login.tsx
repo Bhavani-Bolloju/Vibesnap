@@ -9,24 +9,20 @@ import { addUser } from "@/firebase/database/db-services";
 import { FirebaseError } from "firebase/app";
 import { useState } from "react";
 
-import { Alert, AlertDescription } from "@/components/ui/alert";
-
 import { useNavigate } from "react-router";
 
 import Spinner from "@/components/ui/spinner";
 
+import { toastSuccess, toastError } from "@/components/ui/toast";
+
 const GoogleLogin = function () {
-  const [status, setStatus] = useState<{
-    loading: boolean;
-    success: null | string;
-    error: null | string;
-  }>({ loading: false, success: null, error: null });
+  const [statusLoading, setStatusLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const googleLoginHandler = async function () {
     try {
-      setStatus((prev) => ({ ...prev, loading: true }));
+      setStatusLoading(true);
       const user = await signInWithGoogle();
       if (!user) {
         throw new Error("user not found");
@@ -44,22 +40,18 @@ const GoogleLogin = function () {
       }
 
       //success alert
-      setStatus((prev) => ({
-        ...prev,
-        success: "you have logged in successfully"
-      }));
+      toastSuccess("you have logged in successfully");
 
       //redirect user
       setTimeout(() => {
         navigate("/feeds");
-      }, 5000);
+      }, 3000);
     } catch (error) {
       if (error instanceof FirebaseError) {
-        // setOnError(error.message);
-        setStatus((prev) => ({ ...prev, error: error.message }));
+        toastError(error.message);
       }
     } finally {
-      setStatus((prev) => ({ ...prev, loading: false }));
+      setStatusLoading(false);
     }
   };
 
@@ -98,24 +90,10 @@ const GoogleLogin = function () {
         </svg>
         <span>Continue with Google</span>
       </Button>
-      {status.loading && (
+      {statusLoading && (
         <div className="absolute rounded-md w-[300px] h-[100px] bg-white/30 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] border-2">
           <Spinner />
         </div>
-      )}
-
-      {status.error && (
-        <Alert
-          variant="destructive"
-          className=" bg-red-500 text-white fixed top-2 right-1/2 translate-x-1/2 w-[400px]"
-        >
-          <AlertDescription>{status.error}</AlertDescription>
-        </Alert>
-      )}
-      {status.success && (
-        <Alert className=" bg-primary text-white fixed top-2 right-1/2 translate-x-1/2 w-[400px]">
-          <AlertDescription>{"you have logged in "}</AlertDescription>
-        </Alert>
       )}
     </>
   );
