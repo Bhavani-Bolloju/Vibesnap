@@ -8,7 +8,7 @@ const WelcomePage = function () {
   return (
     <div className="m-auto relative h-screen">
       <Gallery />
-      <div className="w-full absolute top-[50vh] bg-white h-[50vh] rounded-tr-[100px] rounded-tl-[100px] ">
+      <div className="w-full absolute top-[50vh] bg-white h-[45vh] rounded-tr-[100px] rounded-tl-[100px] ">
         <div className="py-10  flex items-center flex-col">
           <h1 className="flex items-center gap-2">
             <img src={logo} alt="" />
