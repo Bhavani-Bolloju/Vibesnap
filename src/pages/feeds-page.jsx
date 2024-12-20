@@ -1,16 +1,13 @@
-import { logout } from "@/firebase/auth/auth-service";
-import { toastSuccess } from "@/components/ui/toast";
+import FeedsList from "@/features/feed/feed-list";
+import UserProfileHeader from "@/features/feed/user-profile-header";
+import AddNewPost from "@/features/feed/add-new-post";
 
 const FeedsPage = function () {
-  const logoutHandler = function () {
-    logout();
-    toastSuccess("You have successfully logged out. See you again soon!");
-  };
-
   return (
-    <div>
-      <h2>welcome to the feeds page</h2>
-      <button onClick={logoutHandler}>logout</button>
+    <div className="p-10">
+      <UserProfileHeader />
+      <FeedsList />
+      <AddNewPost />
     </div>
   );
 };

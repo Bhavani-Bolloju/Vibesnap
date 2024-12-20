@@ -18,6 +18,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)"
       },
+      gridTemplateColumns: {
+        profile: "repeat(2, auto)"
+      },
       keyframes: {
         ripple: {
           "0%": {

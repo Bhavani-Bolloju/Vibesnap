@@ -20,16 +20,3 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
 Input.displayName = "Input";
 
 export { Input };
-
-/*
-
-"dark:border-neutral-800 dark:bg-neutral-950 dark:ring-offset-neutral-950 dark:file:text-neutral-50 dark:placeholder:text-neutral-400 dark:focus-visible:ring-neutral-300
-
-file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-neutral-950
-
-
- focus-visible:ring-offset-2
-
-"
-
-*/
