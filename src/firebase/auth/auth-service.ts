@@ -3,7 +3,8 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  signOut
 } from "firebase/auth";
 
 import { FirebaseError } from "firebase/app";
@@ -66,3 +67,6 @@ export const passwordReset = async function (email: string) {
   }
 };
 
+export const logout = async function () {
+  signOut(auth);
+};

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "@assets/vibespan.svg";
+import logo from "../../public/vibespan.svg";
 import ForgotPassword from "@/features/auth/forgot-password";
 
 import AuthForm from "@/features/auth/auth-form";
@@ -42,4 +42,3 @@ const AuthPage = function () {
 };
 
 export default AuthPage;
-

@@ -18,4 +18,3 @@ export const toastSuccess = function (msg: string) {
 export const toastError = function (msg: string) {
   return toast.error(msg, options);
 };
-
