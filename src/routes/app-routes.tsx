@@ -8,6 +8,7 @@ import AuthPage from "@/pages/auth-page";
 import { useContext } from "react";
 import { AuthContext } from "@/firebase/auth/auth-context";
 import Spinner from "@/components/ui/spinner";
+import CreateNewPost from "@/features/posts/create-new-post";
 
 const AppRoutes = function () {
   const { user, loading } = useContext(AuthContext);
@@ -32,7 +33,11 @@ const AppRoutes = function () {
       ></Route>
       <Route
         path="/feeds"
-        element={user ? <FeedsPage /> : <Navigate to="/auth" />}
+        element={user ? <FeedsPage /> : <Navigate to="/" />}
+      ></Route>
+      <Route
+        path="/createPost"
+        element={user ? <CreateNewPost /> : <Navigate to="/" />}
       ></Route>
     </Routes>
   );

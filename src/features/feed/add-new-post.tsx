@@ -1,7 +1,19 @@
+import { useNavigate } from "react-router";
+
 const AddNewPost = function () {
   // do something
+
+  const navigate = useNavigate();
+
+  const addPostHandler = function () {
+    navigate("/createPost");
+  };
+
   return (
-    <button className="fixed bottom-16 right-12 w-14 h-14 bg-primary flex items-center justify-center rounded-full hover:scale-105 hover:duration-500">
+    <button
+      className="fixed bottom-16 right-12 w-14 h-14 bg-primary flex items-center justify-center rounded-full hover:scale-105 hover:duration-500"
+      onClick={addPostHandler}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 30 30"
