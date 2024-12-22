@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -14,6 +14,17 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
+import { createPost } from "@/firebase/database/db-services";
+
+import { uploadImages } from "@/firebase/storage/storage-services";
+
+import { AuthContext } from "@/firebase/auth/auth-context";
+import { FirebaseError } from "firebase/app";
+
+import { toastSuccess, toastError } from "@/components/ui/toast";
+
+import Spinner from "@/components/ui/spinner";
+
 const CreateNewPost = function () {
   const [multiSelect, setMultiSelect] = useState(false);
   // const [capturedImage, setCapturedImage] = useState<string | null>(null);
@@ -21,6 +32,10 @@ const CreateNewPost = function () {
   const [files, setFiles] = useState<File[] | null>(null);
 
   const [postContentText, setPostContentText] = useState("");
+
+  const user = useContext(AuthContext);
+
+  const [isLoading, setIsloading] = useState(false);
 
   const filesHandler = function (files: File[]) {
     setFiles((prev) => {
@@ -54,8 +69,32 @@ const CreateNewPost = function () {
     setPostContentText(e.target.value);
   };
 
+  const createPostHandler = async function () {
+    if (!files || !user.user || postContentText.trim().length <= 0) return;
+
+    setIsloading(true);
+    try {
+      const imageURLs = await uploadImages(files);
+
+      await createPost(user.user?.uid, postContentText, imageURLs, Date.now());
+      //redirect the user to feeds page
+      toastSuccess("post has been shared successfully!!");
+
+      console.log("redirect user");
+    } catch (error: unknown) {
+      if (error instanceof FirebaseError) {
+        toastError(error.message);
+      }
+    } finally {
+      //clear all the fields
+      setIsloading(false);
+      setPostContentText("");
+      setFiles(null);
+    }
+  };
+
   return (
-    <div className="w-[70%] max-sm:w-[90%] flex flex-col m-auto py-12">
+    <div className="w-[70%] max-sm:w-[90%] flex flex-col m-auto py-12 relative">
       <div className="flex items-center gap-3 text-xl">
         <button>
           <svg
@@ -187,22 +226,24 @@ const CreateNewPost = function () {
           </div>
         )}
       </div>
-      <div className="mt-5 flex flex-col items-end">
-        <textarea
-          name="post-content"
-          rows={2}
-          maxLength={300}
-          placeholder="Enter your notes here...."
-          className="resize-none outline-none  
+      <form id="post">
+        <div className="mt-5 flex flex-col items-end">
+          <textarea
+            name="post-content"
+            rows={2}
+            maxLength={300}
+            placeholder="Enter your notes here...."
+            className="resize-none outline-none  
           w-full placeholder:text-black/50 placeholder:font-karla"
-          onChange={textContentHandler}
-          value={postContentText}
-          required
-        ></textarea>
-        <span className="font-bold font-karla text-primary/80">
-          {postContentText.length}/300
-        </span>
-      </div>
+            onChange={textContentHandler}
+            value={postContentText}
+            required
+          ></textarea>
+          <span className="font-bold font-karla text-primary/80">
+            {postContentText.length}/300
+          </span>
+        </div>
+      </form>
       <div className="flex items-center max-sm:flex-wrap gap-3 border-t-2 pt-3 border-primary/50">
         <UploadContent multiSelect={multiSelect} onUpload={filesHandler} />
         <WebCamCapture onCapture={filesHandler} multiSelect={multiSelect} />
@@ -220,9 +261,19 @@ const CreateNewPost = function () {
           />
         </div>
       </div>
-      <Button className="mt-5 self-end text-end sm:w-[100px] h-10 max-sm:grow uppercase">
+      <Button
+        className="mt-5 self-end text-end sm:w-[100px] h-10 max-sm:grow uppercase"
+        onClick={createPostHandler}
+        type="submit"
+        form="post"
+      >
         Post
       </Button>
+      {isLoading && (
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[200px] h-[100px] bg-white/40">
+          <Spinner />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,13 @@
-import { addDoc, collection, query, where, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  arrayUnion,
+  doc
+} from "firebase/firestore";
 
 import { db } from "../config";
 
@@ -24,4 +33,41 @@ export const getUser = async function (uid: string) {
   const docData = data?.docs[0]?.data();
 
   return { email: docData.email, name: docData.name, uid: docData.uid, docId };
+};
+
+export const createPost = async function (
+  userId: string,
+  textContent: string,
+  images: string[],
+  timestamp: number
+) {
+  const postData = {
+    userId,
+    text: textContent || "",
+    images: images || [],
+    timestamp
+  };
+
+  const docRef = await addDoc(collection(db, "posts"), postData);
+
+  console.log(docRef.id, "post id");
+
+  const userRef = query(collection(db, "users"), where("uid", "==", userId));
+
+  const querySnapshot = await getDocs(userRef);
+
+  const userDoc = querySnapshot.docs[0];
+
+  const userDocRef = doc(db, "users", userDoc.id);
+
+  await updateDoc(userDocRef, {
+    posts: arrayUnion(docRef.id)
+  });
+};
+
+export const getPosts = async function () {
+
+  const q = query(collection(db, "posts"));
+
+
 };
