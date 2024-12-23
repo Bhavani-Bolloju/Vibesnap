@@ -18,6 +18,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)"
       },
+      gridTemplateColumns: {
+        profile: "min-content auto"
+      },
       keyframes: {
         ripple: {
           "0%": {
@@ -31,18 +34,20 @@ export default {
             transform: "scale(2.5)",
             opacity: "0"
           }
-        },
-        slideInFadeOut: {
-          "0%": { transform: "translateX(100%)", opacity: "0" },
-          "10%": { transform: "translateX(0)", opacity: "1" },
-          "90%": { opacity: "1" },
-          "100%": { transform: "translateX(100%)", opacity: "0" }
         }
+
+        // slideInFadeOut: {
+        //   "0%": { transform: "translateX(100%)", opacity: "0" },
+        //   "10%": { transform: "translateX(0)", opacity: "1" },
+        //   "90%": { opacity: "1" },
+        //   "100%": { transform: "translateX(100%)", opacity: "0" }
+        // }
       },
 
       animation: {
-        ripple: "ripple 2s infinite",
-        slideInFadeOut: "slideInFadeOut 3s ease-in-out"
+        ripple: "ripple 2s infinite"
+
+        // slideInFadeOut: "slideInFadeOut 3s ease-in-out"
       }
     }
   },

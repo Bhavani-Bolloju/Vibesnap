@@ -12,7 +12,7 @@ interface AuthContentProviderProps {
 
 const AuthProvider: React.FC<AuthContentProviderProps> = function (props) {
   const [user, setUser] = useState<null | User>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const auth = getAuth();
 
@@ -40,4 +40,3 @@ const AuthProvider: React.FC<AuthContentProviderProps> = function (props) {
 };
 
 export default AuthProvider;
-

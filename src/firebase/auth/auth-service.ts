@@ -32,8 +32,7 @@ export const loginWithEmailAndPassword = async function (
   password: string
 ) {
   try {
-    const login = await signInWithEmailAndPassword(auth, email, password);
-    console.log(login);
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (error: unknown) {
     if (error instanceof FirebaseError) {
       throw error;
@@ -57,9 +56,7 @@ export const signInWithGoogle = async function () {
 
 export const passwordReset = async function (email: string) {
   try {
-    const res = await sendPasswordResetEmail(auth, email);
-
-    console.log(res);
+    await sendPasswordResetEmail(auth, email);
   } catch (error: unknown) {
     if (error instanceof FirebaseError) {
       throw error;
