@@ -5,10 +5,7 @@ export interface UserDataProps {
   posts: string[];
   uid: string;
   userDocId: string;
-  image: string;
-  bio: string;
-  profileImage: string | null | File[];
-  bannerImage: string | null | File[];
+  image?: string;
 }
 
 export interface FeedProps {
@@ -30,18 +27,3 @@ export interface PostProps {
   userId: string;
 }
 
-export interface EditProfileProps {
-  bio?: string;
-  name?: string;
-  profileImage?: string | null | File[];
-
-  bannerImage?: string | null | File[];
-}
-
-// export interface updateProfileProps {
-//   bio?: string;
-//   name?: string;
-//   profileImage?: string | null;
-
-//   bannerImage?: string | null;
-// }
