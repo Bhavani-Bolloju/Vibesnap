@@ -200,7 +200,7 @@ const CreateNewPost = function () {
           </Carousel>
         )}
         {!multiSelect && files?.length === 1 && (
-          <div className="p-3 relative">
+          <div className="p-3 relative md:w-[550px] h-full m-auto">
             <Card className="w-full h-full relative overflow-hidden">
               <CardContent className="flex w-full h-full aspect-square items-center justify-center p-0">
                 {files[0]?.type.startsWith("image") ? (
@@ -210,7 +210,7 @@ const CreateNewPost = function () {
                       alt=""
                       width={400}
                       height={200}
-                      className="object-cover w-full h-full"
+                      className="object-cover w-full h-auto block"
                     />
                   </div>
                 ) : (

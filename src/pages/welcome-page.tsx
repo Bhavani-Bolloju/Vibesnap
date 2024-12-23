@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import Gallery from "@/components/auth/gallery";
 import GoogleLogin from "@/features/auth/google-login";
 import logo from "../../public/vibespan.svg";

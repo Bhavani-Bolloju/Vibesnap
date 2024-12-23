@@ -9,6 +9,8 @@ import { getAuth } from "firebase/auth";
 
 import useUser from "@/hooks/use-user";
 
+import { Link } from "react-router";
+
 const UserProfileHeader = function () {
   const auth = getAuth();
   const user = useUser(auth?.currentUser?.uid);
@@ -36,9 +38,12 @@ const UserProfileHeader = function () {
         <span className="col-start-2 row-start-1 leading-[2] text-sm capitalize text-black/35">
           Welcome back
         </span>
-        <span className="col-start-2 row-start-2  text-md font-semibold capitalize">
-          {user?.name}
-        </span>
+        <Link
+          to="/profile"
+          className="col-start-2 row-start-2 hover:underline hover:text-link"
+        >
+          <span className="text-md font-semibold capitalize">{user?.name}</span>
+        </Link>
       </div>
       <Button
         variant="outline"
