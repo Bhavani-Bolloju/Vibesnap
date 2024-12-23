@@ -7,7 +7,8 @@ import {
   updateDoc,
   arrayUnion,
   doc,
-  orderBy
+  orderBy,
+  getDoc
 } from "firebase/firestore";
 
 import { db } from "../config";
@@ -93,4 +94,21 @@ export const updateUserProfile = async function (
   await updateDoc(userDocRef, {
     ...profile
   });
+};
+
+export const getUserPosts = async function (posts: string[]) {
+  const postsFetchData = posts.map(async (post) => {
+    const postRef = doc(db, "posts", post);
+    const postSnap = await getDoc(postRef);
+
+    if (postSnap.exists()) {
+      return postSnap.data().media;
+    } else {
+      return null;
+    }
+  });
+
+  const postsData = (await Promise.all(postsFetchData)).filter(Boolean);
+
+  return postsData;
 };
