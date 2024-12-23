@@ -12,7 +12,7 @@ import {
 
 import { db } from "../config";
 
-import { UserDataProps } from "@/types";
+import { UserDataProps, EditProfileProps } from "@/types";
 
 export const addUser = async function (
   uid: string,
@@ -82,4 +82,15 @@ export const getPosts = async function () {
   });
 
   return postsData;
+};
+
+export const updateUserProfile = async function (
+  profile: EditProfileProps,
+  docId: string
+) {
+  const userDocRef = doc(db, "users", docId);
+
+  await updateDoc(userDocRef, {
+    ...profile
+  });
 };

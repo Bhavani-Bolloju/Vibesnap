@@ -21,6 +21,7 @@ const UserProfile = function () {
       <Button
         variant="outline"
         className="w-fit h-12 px-14 self-end -mt-16 mr-10"
+        onClick={() => navigate("/editProfile")}
       >
         edit button
       </Button>
@@ -47,4 +48,3 @@ const UserProfile = function () {
 };
 
 export default UserProfile;
-
