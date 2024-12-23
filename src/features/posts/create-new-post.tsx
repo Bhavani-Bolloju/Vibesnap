@@ -25,6 +25,8 @@ import { toastSuccess, toastError } from "@/components/ui/toast";
 
 import Spinner from "@/components/ui/spinner";
 
+import { useNavigate } from "react-router";
+
 const CreateNewPost = function () {
   const [multiSelect, setMultiSelect] = useState(false);
   // const [capturedImage, setCapturedImage] = useState<string | null>(null);
@@ -36,6 +38,8 @@ const CreateNewPost = function () {
   const user = useContext(AuthContext);
 
   const [isLoading, setIsloading] = useState(false);
+
+  const navigate = useNavigate();
 
   const filesHandler = function (files: File[]) {
     setFiles((prev) => {
@@ -69,18 +73,31 @@ const CreateNewPost = function () {
     setPostContentText(e.target.value);
   };
 
-  const createPostHandler = async function () {
-    if (!files || !user.user || postContentText.trim().length <= 0) return;
+  //image/jpeg, video/mp4
+
+  // console.log(files);
+
+  const createPostHandler = async function (
+    e: React.FormEvent<HTMLFormElement>
+  ) {
+    e.preventDefault();
+
+    if (!files || !user.user) return;
 
     setIsloading(true);
     try {
-      const imageURLs = await uploadImages(files);
+      const media = await uploadImages(files);
 
-      await createPost(user.user?.uid, postContentText, imageURLs, Date.now());
-      //redirect the user to feeds page
+      console.log(media, "media");
+
+      await createPost(user.user?.uid, postContentText, media, Date.now());
+
       toastSuccess("post has been shared successfully!!");
 
-      console.log("redirect user");
+      //redirect the user to feeds page
+      setTimeout(() => {
+        navigate("/feeds");
+      }, 2500);
     } catch (error: unknown) {
       if (error instanceof FirebaseError) {
         toastError(error.message);
@@ -93,10 +110,14 @@ const CreateNewPost = function () {
     }
   };
 
+  const backButton = function () {
+    navigate(-1);
+  };
+
   return (
     <div className="w-[70%] max-sm:w-[90%] flex flex-col m-auto py-12 relative">
       <div className="flex items-center gap-3 text-xl">
-        <button>
+        <button onClick={backButton}>
           <svg
             width="24"
             height="24"
@@ -180,10 +201,10 @@ const CreateNewPost = function () {
         )}
         {!multiSelect && files?.length === 1 && (
           <div className="p-3 relative">
-            <Card className="w-full max-h-[450px] relative overflow-hidden">
+            <Card className="w-full h-full relative overflow-hidden">
               <CardContent className="flex w-full h-full aspect-square items-center justify-center p-0">
                 {files[0]?.type.startsWith("image") ? (
-                  <div className="w-full h-auto">
+                  <div className="w-full h-full">
                     <img
                       src={URL.createObjectURL(files[0])}
                       alt=""
@@ -226,7 +247,7 @@ const CreateNewPost = function () {
           </div>
         )}
       </div>
-      <form id="post">
+      <form id="post" onSubmit={createPostHandler}>
         <div className="mt-5 flex flex-col items-end">
           <textarea
             name="post-content"
@@ -263,7 +284,6 @@ const CreateNewPost = function () {
       </div>
       <Button
         className="mt-5 self-end text-end sm:w-[100px] h-10 max-sm:grow uppercase"
-        onClick={createPostHandler}
         type="submit"
         form="post"
       >

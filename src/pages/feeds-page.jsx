@@ -4,7 +4,7 @@ import AddNewPost from "@/features/feed/add-new-post";
 
 const FeedsPage = function () {
   return (
-    <div className="p-10">
+    <div className="p-10 md:w-[70%] md:min-w-[600px] m-auto">
       <UserProfileHeader />
       <FeedsList />
       <AddNewPost />

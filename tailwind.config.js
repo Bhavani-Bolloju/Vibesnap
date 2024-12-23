@@ -19,7 +19,7 @@ export default {
         sm: "calc(var(--radius) - 4px)"
       },
       gridTemplateColumns: {
-        profile: "repeat(2, auto)"
+        profile: "min-content auto"
       },
       keyframes: {
         ripple: {

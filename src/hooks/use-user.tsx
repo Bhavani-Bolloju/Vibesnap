@@ -8,6 +8,7 @@ const useUser = function (userUid: string | undefined) {
   useEffect(() => {
     async function userData(userUid: string) {
       const res = await getUser(userUid);
+
       setUser(res);
     }
 

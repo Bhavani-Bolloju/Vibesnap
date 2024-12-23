@@ -6,10 +6,13 @@ import {
   getDocs,
   updateDoc,
   arrayUnion,
-  doc
+  doc,
+  orderBy
 } from "firebase/firestore";
 
 import { db } from "../config";
+
+import { UserDataProps } from "@/types";
 
 export const addUser = async function (
   uid: string,
@@ -32,25 +35,28 @@ export const getUser = async function (uid: string) {
   const docId = data?.docs[0]?.id;
   const docData = data?.docs[0]?.data();
 
-  return { email: docData.email, name: docData.name, uid: docData.uid, docId };
+  const user = {
+    ...docData,
+    userDocId: docId
+  };
+
+  return user as UserDataProps;
 };
 
 export const createPost = async function (
   userId: string,
   textContent: string,
-  images: string[],
+  media: { url: string; type: string }[],
   timestamp: number
 ) {
   const postData = {
     userId,
     text: textContent || "",
-    images: images || [],
+    media: media || [],
     timestamp
   };
 
   const docRef = await addDoc(collection(db, "posts"), postData);
-
-  console.log(docRef.id, "post id");
 
   const userRef = query(collection(db, "users"), where("uid", "==", userId));
 
@@ -66,8 +72,14 @@ export const createPost = async function (
 };
 
 export const getPosts = async function () {
+  const q = query(collection(db, "posts"), orderBy("timestamp"));
 
-  const q = query(collection(db, "posts"));
+  const data = await getDocs(q);
 
+  const postsData = data.docs.map((doc) => {
+    return { ...doc.data() };
+    // postDocId: doc.id
+  });
 
+  return postsData;
 };
