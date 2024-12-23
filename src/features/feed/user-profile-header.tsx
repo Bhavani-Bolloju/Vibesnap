@@ -5,15 +5,15 @@ import { Button } from "@/components/ui/button";
 
 import image1 from "@assets/img3.webp";
 
-import { getAuth } from "firebase/auth";
+// import { getAuth } from "firebase/auth";
 
 import useUser from "@/hooks/use-user";
 
 import { Link } from "react-router";
 
 const UserProfileHeader = function () {
-  const auth = getAuth();
-  const user = useUser(auth?.currentUser?.uid);
+  // const auth = getAuth();
+  const user = useUser();
 
   const logoutHandler = function () {
     logout();
@@ -57,4 +57,3 @@ const UserProfileHeader = function () {
 };
 
 export default UserProfileHeader;
-

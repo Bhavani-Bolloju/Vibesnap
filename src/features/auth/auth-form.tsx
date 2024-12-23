@@ -21,7 +21,10 @@ const AuthForm = function ({ signup }: { signup: boolean }) {
   const formInputValues = {
     emailAddress: "",
     password: "",
-    name: ""
+    name: "",
+    bio: "",
+    bannerImage: null,
+    profileImage: null
   };
 
   const [inputValues, setInputValues] = useState(formInputValues);

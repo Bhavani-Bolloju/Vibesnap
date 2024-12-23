@@ -12,6 +12,8 @@ import CreateNewPost from "@/features/posts/create-new-post";
 
 import ProfilePage from "@/pages/profile-page";
 
+import EditProfilePage from "@/pages/edit-profile-page";
+
 const AppRoutes = function () {
   const { user, loading } = useContext(AuthContext);
 
@@ -44,6 +46,10 @@ const AppRoutes = function () {
       <Route
         path="/profile"
         element={user ? <ProfilePage /> : <Navigate to="/" />}
+      ></Route>
+      <Route
+        path="/editProfile"
+        element={user ? <EditProfilePage /> : <Navigate to="/" />}
       ></Route>
     </Routes>
   );
