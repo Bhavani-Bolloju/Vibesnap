@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getUser } from "@/firebase/database/db-services";
 import { UserDataProps } from "@/types";
 
-const useUser = function (userUid: string | undefined) {
+import { AuthContext } from "@/firebase/auth/auth-context";
+
+const useUser = function () {
   const [user, setUser] = useState<UserDataProps | null>(null);
+  const auth = useContext(AuthContext);
+  const uid = auth?.user?.uid;
 
   useEffect(() => {
     async function userData(userUid: string) {
@@ -12,13 +16,12 @@ const useUser = function (userUid: string | undefined) {
       setUser(res);
     }
 
-    if (userUid) {
-      userData(userUid);
+    if (uid) {
+      userData(uid);
     }
-  }, [userUid]);
+  }, [uid]);
 
   return user;
 };
 
 export default useUser;
-

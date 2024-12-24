@@ -7,12 +7,13 @@ import {
   updateDoc,
   arrayUnion,
   doc,
-  orderBy
+  orderBy,
+  getDoc
 } from "firebase/firestore";
 
 import { db } from "../config";
 
-import { UserDataProps } from "@/types";
+import { UserDataProps, EditProfileProps } from "@/types";
 
 export const addUser = async function (
   uid: string,
@@ -80,6 +81,36 @@ export const getPosts = async function () {
     return { ...doc.data() };
     // postDocId: doc.id
   });
+
+  return postsData;
+};
+
+export const updateUserProfile = async function (
+  profile: EditProfileProps,
+  docId: string
+) {
+  const userDocRef = doc(db, "users", docId);
+
+  await updateDoc(userDocRef, {
+    ...profile
+  });
+};
+
+export const getUserPosts = async function (
+  posts: string[]
+): Promise<{ url: string; type: string }[][]> {
+  const postsFetchData = posts.map(async (post) => {
+    const postRef = doc(db, "posts", post);
+    const postSnap = await getDoc(postRef);
+
+    if (postSnap.exists()) {
+      return postSnap.data().media;
+    } else {
+      return null;
+    }
+  });
+
+  const postsData = (await Promise.all(postsFetchData)).filter(Boolean);
 
   return postsData;
 };
