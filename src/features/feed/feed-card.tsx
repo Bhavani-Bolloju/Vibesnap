@@ -14,7 +14,7 @@ const FeedCard = function ({
   media,
   timestamp
 }: FeedProps) {
-  console.log(timestamp);
+  // console.log(timestamp);
   return (
     <div className="px-14 max-sm:px-5 py-5  rounded-[5%] mb-10 border-2">
       <div className="grid grid-cols-profile gap-x-5 grid-rows-2 h-12 mb-5 content-center">
@@ -123,4 +123,3 @@ const FeedCard = function ({
 };
 
 export default FeedCard;
-

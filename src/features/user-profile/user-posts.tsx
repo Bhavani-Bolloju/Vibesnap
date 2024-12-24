@@ -1,13 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { UserPostsProp } from "@/types";
 
-interface UserPostsProp {
-  posts: { url: string; type: string }[][];
-}
 const UserPosts = function ({ posts }: UserPostsProp) {
   return (
     <div>
       <h4 className="font-karla font-semibold text-lg mb-2">My posts</h4>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 ">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 w-full h-full gap-5">
         {posts &&
           posts?.map((post, i) => {
             const firstPost = post[0];
@@ -22,15 +20,16 @@ const UserPosts = function ({ posts }: UserPostsProp) {
                           alt=""
                           width={400}
                           height={200}
-                          className="object-cover w-full h-auto block"
+                          className="object-cover w-full h-full block"
                         />
                       </div>
                     ) : (
                       <div className="h-full w-full ">
                         <video
-                          width={500}
+                          width={400}
+                          height={200}
                           controls
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-cover block"
                         >
                           <source
                             src={firstPost.url}
@@ -53,4 +52,3 @@ const UserPosts = function ({ posts }: UserPostsProp) {
 };
 
 export default UserPosts;
-

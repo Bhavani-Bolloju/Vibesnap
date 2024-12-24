@@ -38,10 +38,6 @@ export interface EditProfileProps {
   bannerImage?: string | null | File[];
 }
 
-// export interface updateProfileProps {
-//   bio?: string;
-//   name?: string;
-//   profileImage?: string | null;
-
-//   bannerImage?: string | null;
-// }
+export interface UserPostsProp {
+  posts: { url: string; type: string }[][] | [];
+}

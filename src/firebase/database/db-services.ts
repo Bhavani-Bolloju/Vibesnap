@@ -96,7 +96,9 @@ export const updateUserProfile = async function (
   });
 };
 
-export const getUserPosts = async function (posts: string[]) {
+export const getUserPosts = async function (
+  posts: string[]
+): Promise<{ url: string; type: string }[][]> {
   const postsFetchData = posts.map(async (post) => {
     const postRef = doc(db, "posts", post);
     const postSnap = await getDoc(postRef);

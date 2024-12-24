@@ -8,7 +8,7 @@ const FeedsList = function () {
   return (
     <div className="mt-10">
       <div className="">{isLoading && <Spinner />}</div>
-      <div>{feeds && feeds.map((feed) => <FeedCard {...feed} />)}</div>
+      <div>{feeds && feeds.map((feed,i) => <FeedCard key={i} {...feed} />)}</div>
     </div>
   );
 };
