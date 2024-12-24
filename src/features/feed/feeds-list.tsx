@@ -3,10 +3,10 @@ import FeedCard from "./feed-card";
 
 import { Skeleton } from "@/components/ui/skeleton";
 
+import React from "react";
+
 const FeedsList = function () {
   const { isLoading, feeds } = useFeeds();
-
-  console.log(feeds);
 
   const postsLists = Array.from({ length: 5 }, (_, i) => {
     return i;
@@ -16,8 +16,8 @@ const FeedsList = function () {
     <div className="mt-10">
       <div className="flex flex-col gap-5">
         {isLoading &&
-          postsLists.map(() => (
-            <>
+          postsLists.map((num) => (
+            <React.Fragment key={num}>
               <div className="flex items-center space-x-4">
                 <Skeleton className="h-12 w-12 rounded-full" />
                 <div className="space-y-2">
@@ -26,7 +26,7 @@ const FeedsList = function () {
                 </div>
               </div>
               <Skeleton className="w-full h-[200px] rounded-2xl" />
-            </>
+            </React.Fragment>
           ))}
       </div>
       <div>

@@ -6,13 +6,14 @@ import { ToastContainer, Slide } from "react-toastify";
 
 import { BrowserRouter } from "react-router";
 import AuthProvider from "./firebase/auth/auth-provider";
-import AppRoutes from "./routes/app-routes";
+// import AppRoutes from "./routes/app-routes";
+import AppPage from "./app-page";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <AppRoutes />
+        <AppPage />
         <ToastContainer
           position="top-right"
           autoClose={2000}
@@ -31,12 +32,3 @@ createRoot(document.getElementById("root")!).render(
     </BrowserRouter>
   </StrictMode>
 );
-
-
-// import AppRoutes from "./routes/app-routes";
-
-// function App() {
-//   return <AppRoutes />;
-// }
-
-// export default App;

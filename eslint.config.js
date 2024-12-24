@@ -37,7 +37,7 @@ export default tseslint.config(
     }
   },
   {
-    files: ["vite.config.ts", "./src/App.tsx"],
+    files: ["vite.config.ts", "./src/app.tsx"],
     rules: {
       "check-file/filename-naming-convention": "off"
     }

@@ -4,7 +4,7 @@ import React, { useState, ReactNode, useEffect } from "react";
 
 import { onAuthStateChanged, User } from "firebase/auth";
 
-import { getAuth } from "firebase/auth";
+import { auth } from "../config";
 
 interface AuthContentProviderProps {
   children: ReactNode;
@@ -13,8 +13,6 @@ interface AuthContentProviderProps {
 const AuthProvider: React.FC<AuthContentProviderProps> = function (props) {
   const [user, setUser] = useState<null | User>(null);
   const [loading, setLoading] = useState(true);
-
-  const auth = getAuth();
 
   useEffect(() => {
     const listerner = onAuthStateChanged(auth, (user) => {
@@ -30,7 +28,7 @@ const AuthProvider: React.FC<AuthContentProviderProps> = function (props) {
     });
 
     return () => listerner();
-  }, [auth]);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, loading }}>
