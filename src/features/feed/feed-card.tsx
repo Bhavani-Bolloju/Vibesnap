@@ -14,6 +14,10 @@ import { getRandomPastelColor } from "@/components/utils/utils";
 
 import SharePost from "./share-post";
 
+import LazyLoad from "@/components/performance/lazy-load";
+
+import VideoAutoPlay from "@/components/performance/video-auto-play";
+
 const FeedCard = function ({
   profileImage,
   name,
@@ -22,9 +26,7 @@ const FeedCard = function ({
   timestamp
 }: FeedProps) {
   const date = new Date(timestamp);
-
   const postDate = getRelativeTime(date);
-
   const bgColor = getRandomPastelColor();
 
   return (
@@ -35,13 +37,9 @@ const FeedCard = function ({
       className="px-14 max-sm:px-5 py-5 rounded-[5%] mb-10 flex flex-col"
     >
       <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 content-center">
-        <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-red-400">
+        <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-gray-300">
           {profileImage && typeof profileImage === "string" ? (
-            <img
-              src={profileImage}
-              alt=""
-              className="block w-full h-full object-cover"
-            />
+            <LazyLoad src={profileImage} alt="" />
           ) : (
             <div className="flex items-center justify-center uppercase  w-full h-full">
               {name[0][0]}
@@ -65,28 +63,9 @@ const FeedCard = function ({
               <Card className="md:w-[60%] md:min-w-[400px] h-full rounded-2xl relative overflow-hidden">
                 <CardContent className="flex w-full h-full aspect-square items-center justify-center p-0">
                   {media[0]?.type === "image" ? (
-                    <div className="w-full h-full">
-                      <img
-                        src={media[0].url}
-                        alt=""
-                        width={400}
-                        height={200}
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
+                    <LazyLoad src={media[0].url} alt="" />
                   ) : (
-                    <div className="h-full w-full ">
-                      <video
-                        width={500}
-                        controls
-                        className="h-full w-full object-cover"
-                      >
-                        <source
-                          src={media[0].url}
-                          type={`${media[0].type}/mp4`}
-                        />
-                      </video>
-                    </div>
+                    <VideoAutoPlay src={media[0].url} type={media[0]?.type} />
                   )}
                 </CardContent>
               </Card>
@@ -101,25 +80,9 @@ const FeedCard = function ({
                         <Card className="rounded-2xl relative overflow-hidden">
                           <CardContent className="flex aspect-square items-center justify-center p-0">
                             {file?.type === "image" ? (
-                              <div className="w-full h-full">
-                                <img
-                                  src={file.url}
-                                  alt=""
-                                  width={300}
-                                  height={200}
-                                  className="object-cover w-full h-full"
-                                />
-                              </div>
+                              <LazyLoad src={file.url} alt="" />
                             ) : (
-                              <div className="h-full w-full ">
-                                <video
-                                  width={500}
-                                  controls
-                                  className="h-full w-full object-cover"
-                                >
-                                  <source src={file.url} type={file.type} />
-                                </video>
-                              </div>
+                              <VideoAutoPlay src={file.url} type={file?.type} />
                             )}
                           </CardContent>
                           <span className="bg-white px-2 rounded-full text-xs font-karla absolute top-2 left-2">{`${index + 1}/${media.length}`}</span>
@@ -135,9 +98,19 @@ const FeedCard = function ({
           )}
         </div>
       )}
-      <SharePost></SharePost>
+      <SharePost />
     </div>
   );
 };
 
 export default FeedCard;
+
+// <div className="h-full w-full ">
+//   <video
+//     width={500}
+//     controls
+//     className="h-full w-full object-cover"
+//   >
+//     <source src={file.url} type={file.type} />
+//   </video>
+// </div>

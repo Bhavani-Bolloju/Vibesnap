@@ -7,6 +7,8 @@ import useUser from "@/hooks/use-user";
 
 import { Link } from "react-router";
 
+import LazyLoad from "@/components/performance/lazy-load";
+
 const UserProfileHeader = function () {
   const user = useUser();
 
@@ -17,15 +19,11 @@ const UserProfileHeader = function () {
   return (
     <div className="flex justify-between items-center">
       <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 mb-5 content-center items-center">
-        <div className="w-[70px] h-[70px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-red-400">
+        <div className="w-[70px] h-[70px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-gray-300">
           {user?.profileImage && typeof user?.profileImage === "string" ? (
-            <img
-              src={user?.profileImage}
-              alt=""
-              className="block w-full h-full object-cover"
-            />
+            <LazyLoad src={user?.profileImage} alt="profile" />
           ) : (
-            <div className="flex items-center justify-center uppercase  w-full h-full">
+            <div className="flex items-center justify-center uppercase w-full h-full">
               {user?.name[0][0]}
             </div>
           )}

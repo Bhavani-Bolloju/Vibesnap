@@ -73,10 +73,6 @@ const CreateNewPost = function () {
     setPostContentText(e.target.value);
   };
 
-  //image/jpeg, video/mp4
-
-  // console.log(files);
-
   const createPostHandler = async function (
     e: React.FormEvent<HTMLFormElement>
   ) {
