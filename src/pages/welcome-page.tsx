@@ -1,4 +1,4 @@
-import Gallery from "@/components/auth/gallery";
+import Gallery from "@/components/welcome/gallery";
 import GoogleLogin from "@/features/auth/google-login";
 import logo from "../../public/vibespan.svg";
 import { Link } from "react-router";

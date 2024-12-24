@@ -10,6 +10,8 @@ import usePosts from "@/hooks/use-posts";
 
 import UserPosts from "./user-posts";
 
+import LazyLoad from "@/components/performance/lazy-load";
+
 const UserProfile = function () {
   const user = useUser();
 
@@ -24,20 +26,12 @@ const UserProfile = function () {
       </button>
       <div className="h-[250px] bg-gray-200 overflow-hidden">
         {user?.bannerImage && typeof user?.bannerImage === "string" && (
-          <img
-            src={user?.bannerImage}
-            alt="banner"
-            className="w-full h-full object-cover"
-          />
+          <LazyLoad src={user?.bannerImage} alt="banner" />
         )}
       </div>
-      <div className="h-[150px] overflow-hidden w-[150px] bg-cyan-500 rounded-full -mt-16 ml-10">
+      <div className="h-[150px] overflow-hidden w-[150px] bg-gray-200 rounded-full -mt-16 ml-10">
         {user?.profileImage && typeof user?.profileImage === "string" && (
-          <img
-            src={user?.profileImage}
-            alt="profile"
-            className="w-full h-full object-cover"
-          />
+          <LazyLoad src={user?.profileImage} alt="profile" />
         )}
       </div>
       <Button

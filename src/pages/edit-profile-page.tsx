@@ -7,7 +7,7 @@ import navigation from "@assets/navigation.svg";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-import UploadContent from "@/features/posts/upload-content";
+import UploadContent from "@/components/posts/upload-content";
 
 import EditImageIcon from "@/components/ui/edit-image-icon";
 
@@ -158,7 +158,7 @@ const EditProfilePage = function () {
         </UploadContent>
       </div>
 
-      <div className="h-[150px] overflow-hidden w-[150px] relative bg-cyan-500 rounded-full -mt-16 ml-10">
+      <div className="h-[150px] overflow-hidden w-[150px] relative bg-gray-200 rounded-full -mt-16 ml-10">
         {profileDetails?.profileImage && (
           <img
             src={

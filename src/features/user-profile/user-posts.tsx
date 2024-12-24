@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { UserPostsProp } from "@/types";
+import LazyLoad from "@/components/performance/lazy-load";
 
 const UserPosts = function ({ posts }: UserPostsProp) {
   return (
@@ -15,13 +16,7 @@ const UserPosts = function ({ posts }: UserPostsProp) {
                   <CardContent className="flex w-full h-full aspect-square items-center justify-center p-0">
                     {firstPost?.type === "image" ? (
                       <div className="w-full h-full">
-                        <img
-                          src={firstPost.url}
-                          alt=""
-                          width={400}
-                          height={200}
-                          className="object-cover w-full h-full block"
-                        />
+                        <LazyLoad src={firstPost.url} alt="" />
                       </div>
                     ) : (
                       <div className="h-full w-full ">

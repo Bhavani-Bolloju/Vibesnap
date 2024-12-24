@@ -9,7 +9,7 @@ import {
   CarouselPrevious
 } from "@/components/ui/carousel";
 import WebCamCapture from "./web-cam-capture";
-import UploadContent from "./upload-content";
+import UploadContent from "../../components/posts/upload-content";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
