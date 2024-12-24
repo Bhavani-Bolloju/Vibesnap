@@ -17,7 +17,7 @@ export interface FeedProps {
   name: string;
   uid: string;
   text: string;
-  profileImage?: string;
+  profileImage: string | null | File[];
 
   // postDocId: string;
 }

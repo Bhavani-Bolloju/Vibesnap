@@ -7,6 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
+
+import { getRelativeTime } from "@/components/utils/utils";
+
 const FeedCard = function ({
   profileImage,
   name,
@@ -14,12 +17,15 @@ const FeedCard = function ({
   media,
   timestamp
 }: FeedProps) {
-  // console.log(timestamp);
+  const date = new Date(timestamp);
+
+  const postDate = getRelativeTime(date);
+
   return (
     <div className="px-14 max-sm:px-5 py-5  rounded-[5%] mb-10 border-2">
       <div className="grid grid-cols-profile gap-x-5 grid-rows-2 h-12 mb-5 content-center">
         <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-red-400">
-          {profileImage ? (
+          {profileImage && typeof profileImage === "string" ? (
             <img
               src={profileImage}
               alt=""
@@ -35,7 +41,7 @@ const FeedCard = function ({
           {name}
         </span>
         <span className="font-kumbh-sans font-normal col-start-2 row-start-2 leading-[2] text-sm capitalize text-black/35">
-          time
+          {postDate}
         </span>
       </div>
       <div className="ml-2 font-kumbh-sans text-base font-normal mt-5">

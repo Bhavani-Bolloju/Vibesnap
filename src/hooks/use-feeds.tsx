@@ -28,7 +28,8 @@ const useFeeds = function () {
             timestamp: post.timestamp,
             text: post.text,
             name: user.name,
-            uid: user.uid
+            uid: user.uid,
+            profileImage: user.profileImage
           };
 
           return postData;
@@ -53,4 +54,3 @@ const useFeeds = function () {
 };
 
 export default useFeeds;
-

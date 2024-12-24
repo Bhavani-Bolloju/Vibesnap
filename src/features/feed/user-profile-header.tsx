@@ -3,16 +3,11 @@ import { toastSuccess } from "@/components/ui/toast";
 
 import { Button } from "@/components/ui/button";
 
-import image1 from "@assets/img3.webp";
-
-// import { getAuth } from "firebase/auth";
-
 import useUser from "@/hooks/use-user";
 
 import { Link } from "react-router";
 
 const UserProfileHeader = function () {
-  // const auth = getAuth();
   const user = useUser();
 
   const logoutHandler = function () {
@@ -23,9 +18,9 @@ const UserProfileHeader = function () {
     <div className="flex justify-between items-center">
       <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 mb-5 content-center">
         <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-red-400">
-          {user?.image ? (
+          {user?.profileImage && typeof user?.profileImage === "string" ? (
             <img
-              src={image1}
+              src={user?.profileImage}
               alt=""
               className="block w-full h-full object-cover"
             />
