@@ -1,4 +1,4 @@
-import FeedsList from "@/features/feed/feed-list";
+import FeedsList from "@/features/feed/feeds-list";
 import UserProfileHeader from "@/features/feed/user-profile-header";
 import AddNewPost from "@/features/feed/add-new-post";
 

@@ -1,17 +1,19 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App";
+
 import { ToastContainer, Slide } from "react-toastify";
 
 import { BrowserRouter } from "react-router";
 import AuthProvider from "./firebase/auth/auth-provider";
 
+
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        {/* <App /> */}
         <ToastContainer
           position="top-right"
           autoClose={2000}
