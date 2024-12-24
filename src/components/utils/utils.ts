@@ -5,3 +5,12 @@ export const getRelativeTime = (date: Date) => {
   return formatDistanceToNow(date, { addSuffix: true });
 };
 
+export function getRandomPastelColor() {
+  const randomValue = () => Math.floor(Math.random() * 36) + 220;
+  const r = randomValue();
+  const g = randomValue();
+  const b = randomValue();
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
+

@@ -16,8 +16,8 @@ const UserProfileHeader = function () {
   };
   return (
     <div className="flex justify-between items-center">
-      <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 mb-5 content-center">
-        <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-red-400">
+      <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 mb-5 content-center items-center">
+        <div className="w-[70px] h-[70px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-red-400">
           {user?.profileImage && typeof user?.profileImage === "string" ? (
             <img
               src={user?.profileImage}

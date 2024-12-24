@@ -10,6 +10,10 @@ import {
 
 import { getRelativeTime } from "@/components/utils/utils";
 
+import { getRandomPastelColor } from "@/components/utils/utils";
+
+import SharePost from "./share-post";
+
 const FeedCard = function ({
   profileImage,
   name,
@@ -21,9 +25,16 @@ const FeedCard = function ({
 
   const postDate = getRelativeTime(date);
 
+  const bgColor = getRandomPastelColor();
+
   return (
-    <div className="px-14 max-sm:px-5 py-5  rounded-[5%] mb-10 border-2">
-      <div className="grid grid-cols-profile gap-x-5 grid-rows-2 h-12 mb-5 content-center">
+    <div
+      style={{
+        backgroundColor: bgColor
+      }}
+      className="px-14 max-sm:px-5 py-5 rounded-[5%] mb-10 flex flex-col"
+    >
+      <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 content-center">
         <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-red-400">
           {profileImage && typeof profileImage === "string" ? (
             <img
@@ -124,6 +135,7 @@ const FeedCard = function ({
           )}
         </div>
       )}
+      <SharePost></SharePost>
     </div>
   );
 };
