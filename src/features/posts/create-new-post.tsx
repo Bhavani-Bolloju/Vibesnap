@@ -78,13 +78,16 @@ const CreateNewPost = function () {
   ) {
     e.preventDefault();
 
-    if (!files || !user.user) return;
+    if (!user.user) return;
 
     setIsloading(true);
     try {
-      const media = await uploadImages(files);
-
-      console.log(media, "media");
+      let media;
+      if (files && user.user) {
+        media = await uploadImages(files);
+      } else {
+        media = null;
+      }
 
       await createPost(user.user?.uid, postContentText, media, Date.now());
 
@@ -206,7 +209,7 @@ const CreateNewPost = function () {
                       alt=""
                       width={400}
                       height={200}
-                      className="object-cover w-full h-auto block"
+                      className="object-cover w-full h-full block"
                     />
                   </div>
                 ) : (
@@ -247,7 +250,7 @@ const CreateNewPost = function () {
         <div className="mt-5 flex flex-col items-end">
           <textarea
             name="post-content"
-            rows={2}
+            rows={3}
             maxLength={300}
             placeholder="Enter your notes here...."
             className="resize-none outline-none  

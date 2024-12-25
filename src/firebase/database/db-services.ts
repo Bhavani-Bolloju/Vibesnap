@@ -8,7 +8,11 @@ import {
   arrayUnion,
   doc,
   orderBy,
-  getDoc
+  getDoc,
+  startAfter,
+  limit,
+  QueryDocumentSnapshot,
+  DocumentData
 } from "firebase/firestore";
 
 import { db } from "../config";
@@ -47,13 +51,13 @@ export const getUser = async function (uid: string) {
 export const createPost = async function (
   userId: string,
   textContent: string,
-  media: { url: string; type: string }[],
+  media: { url: string; type: string }[] | null,
   timestamp: number
 ) {
   const postData = {
     userId,
     text: textContent || "",
-    media: media || [],
+    media: media || null,
     timestamp
   };
 
@@ -72,18 +76,6 @@ export const createPost = async function (
   });
 };
 
-export const getPosts = async function () {
-  const q = query(collection(db, "posts"), orderBy("timestamp"));
-
-  const data = await getDocs(q);
-
-  const postsData = data.docs.map((doc) => {
-    return { ...doc.data() };
-    // postDocId: doc.id
-  });
-
-  return postsData;
-};
 
 export const updateUserProfile = async function (
   profile: EditProfileProps,
@@ -113,4 +105,50 @@ export const getUserPosts = async function (
   const postsData = (await Promise.all(postsFetchData)).filter(Boolean);
 
   return postsData;
+};
+
+export const fetchPostsOnScroll = async function (
+  lastVisibleDoc: QueryDocumentSnapshot<DocumentData> | null = null,
+  pageSize: number = 5
+) {
+  const postsRef = collection(db, "posts");
+
+  let q;
+
+  if (lastVisibleDoc) {
+    q = query(
+      postsRef,
+      orderBy("timestamp"),
+      startAfter(lastVisibleDoc),
+      limit(pageSize)
+    );
+  } else {
+    q = query(postsRef, orderBy("timestamp"), limit(pageSize));
+  }
+
+  const data = await getDocs(q);
+
+  const postsData = data.docs.map(async (doc) => {
+    const post = { ...doc.data() };
+
+    const user = await getUser(post?.userId);
+
+    const postData = {
+      media: post.media,
+      timestamp: post.timestamp,
+      text: post.text,
+      name: user.name,
+      uid: user.uid,
+      profileImage: user.profileImage,
+      postDocId: doc.id
+    };
+
+    return postData;
+  });
+
+  const posts = await Promise.all(postsData);
+
+  const lastDoc = data.docs[data.docs.length - 1];
+
+  return { posts, lastDoc };
 };

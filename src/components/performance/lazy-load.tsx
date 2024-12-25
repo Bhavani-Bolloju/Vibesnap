@@ -12,7 +12,7 @@ interface LazyLoadProps {
 const LazyLoad = function ({ src, alt = "" }: LazyLoadProps) {
   const { ref, inView } = useInView({
     threshold: 0.5,
-    delay: 1500,
+    delay: 500,
     triggerOnce: true
   });
 
@@ -42,4 +42,3 @@ const LazyLoad = function ({ src, alt = "" }: LazyLoadProps) {
 };
 
 export default LazyLoad;
-

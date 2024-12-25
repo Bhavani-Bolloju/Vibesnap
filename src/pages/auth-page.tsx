@@ -14,7 +14,7 @@ const AuthPage = function () {
       <p className="text-base self-center mb-10 ">
         Moments That Matter, Shared Forever.
       </p>
-      <div className="w-[550px] rounded-lg px-20 py-10 leading-4 border-2 flex flex-col">
+      <div className="sm:w-[550px] rounded-lg px-20 max-sm:px-5 py-10 leading-4 border-2 flex flex-col">
         <h2 className="font-bold text-xl mb-1">
           {signup ? "Sign Up" : "Login"}
         </h2>

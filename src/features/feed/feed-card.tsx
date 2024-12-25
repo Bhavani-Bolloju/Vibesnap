@@ -34,7 +34,7 @@ const FeedCard = function ({
       style={{
         backgroundColor: bgColor
       }}
-      className="px-14 max-sm:px-5 py-5 rounded-[5%] mb-10 flex flex-col"
+      className="px-14 max-sm:px-5 py-5 rounded-[5%] mb-10 flex flex-col shadow-sm"
     >
       <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 content-center">
         <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-gray-300">
@@ -56,7 +56,7 @@ const FeedCard = function ({
       <div className="ml-2 font-kumbh-sans text-base font-normal mt-5">
         {text}
       </div>
-      {media.length > 0 && (
+      {media && media?.length > 0 && (
         <div className=" h-full">
           {media.length === 1 ? (
             <div className="p-3 relative">

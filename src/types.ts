@@ -19,16 +19,10 @@ export interface FeedProps {
   text: string;
   profileImage: string | null | File[];
 
-  // postDocId: string;
+
 }
 
-export interface PostProps {
-  media: { url: string; type: string }[];
-  // postDocId: string;
-  text: string;
-  timestamp: number;
-  userId: string;
-}
+
 
 export interface EditProfileProps {
   bio?: string;

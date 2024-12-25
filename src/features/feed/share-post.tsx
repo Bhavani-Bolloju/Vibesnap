@@ -19,7 +19,7 @@ const SharePost = function () {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-fit h-10 bg-gray-200 text-black hover:bg-gray-300 capitalize text-base self-end">
+        <Button className="w-fit h-10 bg-gray-200 text-black hover:bg-gray-300 capitalize text-base self-end border border-white hover:shadow-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -55,4 +55,3 @@ const SharePost = function () {
 };
 
 export default SharePost;
-

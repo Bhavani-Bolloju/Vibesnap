@@ -1,13 +1,6 @@
 import { Routes, Route, Navigate } from "react-router";
 import { lazy, Suspense } from "react";
 
-// import WelcomePage from "@/pages/welcome-page";
-// import FeedsPage from "@/pages/feeds-page";
-// import AuthPage from "@/pages/auth-page";
-// import CreateNewPost from "@/features/posts/create-new-post";
-// import ProfilePage from "@/pages/profile-page";
-// import EditProfilePage from "@/pages/edit-profile-page";
-
 import { useContext } from "react";
 import { AuthContext } from "@/firebase/auth/auth-context";
 import Spinner from "@/components/ui/spinner";
@@ -97,30 +90,3 @@ const AppRoutes = function () {
 };
 
 export default AppRoutes;
-
-// <Routes>
-//   <Route
-//     path="/"
-//     element={!user ? <LazyWelcomePage /> : <Navigate to="/feeds" />}
-//   />
-//   <Route
-//     path="/auth"
-//     element={!user ? <LazyAuthPage /> : <Navigate to="/feeds" />}
-//   />
-//   <Route
-//     path="/feeds"
-//     element={user ? <LazyFeedsPage /> : <Navigate to="/" />}
-//   />
-//   {/* <Route
-//     path="/createPost"
-//     element={user ? <LazyCreateNewPost /> : <Navigate to="/" />}
-//   /> */}
-//   {/* <Route
-//     path="/profile"
-//     element={user ? <LazyProfilePage /> : <Navigate to="/" />}
-//   /> */}
-//   {/* <Route
-//     path="/editProfile"
-//     element={user ? <LazyEditProfilePage /> : <Navigate to="/" />}
-//   /> */}
-// </Routes>

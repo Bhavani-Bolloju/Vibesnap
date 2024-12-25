@@ -18,8 +18,8 @@ const UserProfileHeader = function () {
   };
   return (
     <div className="flex justify-between items-center">
-      <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 mb-5 content-center items-center">
-        <div className="w-[70px] h-[70px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-gray-300">
+      <div className="grid grid-cols-profile gap-x-3 max-sm:gap-x-1 grid-rows-2 h-12 content-center items-center">
+        <div className="w-[70px] h-[70px] max-sm:w-[60px] max-sm:h-[60px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-gray-300">
           {user?.profileImage && typeof user?.profileImage === "string" ? (
             <LazyLoad src={user?.profileImage} alt="profile" />
           ) : (
@@ -28,7 +28,7 @@ const UserProfileHeader = function () {
             </div>
           )}
         </div>
-        <span className="col-start-2 row-start-1 leading-[2] text-sm capitalize text-black/35">
+        <span className="col-start-2 row-start-1 text-sm capitalize text-black/35">
           Welcome back
         </span>
         <Link
@@ -40,7 +40,7 @@ const UserProfileHeader = function () {
       </div>
       <Button
         variant="outline"
-        className="w-fit px-8 h-[40px]"
+        className="w-fit px-8 h-[40px] max-sm:px-5"
         onClick={logoutHandler}
       >
         Logout

@@ -1,6 +1,6 @@
+import LazyLoad from "@/components/performance/lazy-load";
 import { Card, CardContent } from "@/components/ui/card";
 import { UserPostsProp } from "@/types";
-import LazyLoad from "@/components/performance/lazy-load";
 
 const UserPosts = function ({ posts }: UserPostsProp) {
   return (
