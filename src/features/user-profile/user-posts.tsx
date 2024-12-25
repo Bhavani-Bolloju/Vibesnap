@@ -18,7 +18,12 @@ const UserPosts = function ({ posts }: UserPostsProp) {
                   <CardContent className="flex w-full h-full aspect-square items-center justify-center p-0">
                     {firstPost?.type === "image" ? (
                       <div className="w-full h-full">
-                        <LazyLoad src={firstPost.url} alt="" />
+                        <LazyLoad
+                          src={firstPost.url}
+                          alt=""
+                          width={400}
+                          height={400}
+                        />
                       </div>
                     ) : (
                       <div className="h-full w-full ">

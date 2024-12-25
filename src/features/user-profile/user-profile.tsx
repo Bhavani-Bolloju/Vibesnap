@@ -39,7 +39,12 @@ const UserProfile = function () {
       </div>
       <div className="h-[150px] overflow-hidden w-[150px] max-sm:h-[100px] max-sm:w-[100px] bg-gray-200 rounded-full -mt-16 ml-8 max-sm:-mt-10 ">
         {user?.profileImage && typeof user?.profileImage === "string" && (
-          <LazyLoad src={user?.profileImage} alt="profile" />
+          <LazyLoad
+            src={user?.profileImage}
+            alt="profile"
+            width={400}
+            height={400}
+          />
         )}
       </div>
       <Button
