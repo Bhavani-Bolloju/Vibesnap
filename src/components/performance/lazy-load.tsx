@@ -5,13 +5,18 @@ import { Skeleton } from "../ui/skeleton";
 interface LazyLoadProps {
   src: string;
   alt: string;
-  // width: string;
-  // height: string;
+  width?: number;
+  height: number;
 }
 
-const LazyLoad = function ({ src, alt = "" }: LazyLoadProps) {
+const LazyLoad = function ({
+  src,
+  alt = "",
+  width = 400,
+  height = 400
+}: LazyLoadProps) {
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.8,
     delay: 500,
     triggerOnce: true
   });
@@ -29,8 +34,8 @@ const LazyLoad = function ({ src, alt = "" }: LazyLoadProps) {
       {isLoading ? (
         <img
           src={src}
-          width={400}
-          height={500}
+          width={width}
+          height={height}
           alt={alt}
           className="w-full h-full object-cover block"
         />

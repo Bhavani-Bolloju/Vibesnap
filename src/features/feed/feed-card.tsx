@@ -8,15 +8,16 @@ import {
   CarouselPrevious
 } from "@/components/ui/carousel";
 
-import { getRelativeTime } from "@/components/utils/utils";
 
-import { getRandomPastelColor } from "@/components/utils/utils";
+import { getRandomPastelColor } from "@/components/shared/get-relative-time";
 
 import SharePost from "./share-post";
 
 import LazyLoad from "@/components/performance/lazy-load";
 
 import VideoAutoPlay from "@/components/performance/video-auto-play";
+
+import getRelativeTime from "@/components/shared/get-relative-time";
 
 const FeedCard = function ({
   profileImage,
@@ -39,7 +40,7 @@ const FeedCard = function ({
       <div className="grid grid-cols-profile gap-x-3 grid-rows-2 h-12 content-center">
         <div className="w-[50px] h-[50px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-gray-300">
           {profileImage && typeof profileImage === "string" ? (
-            <LazyLoad src={profileImage} alt="" />
+            <LazyLoad src={profileImage} alt="" width={50} height={50} />
           ) : (
             <div className="flex items-center justify-center uppercase  w-full h-full">
               {name[0][0]}

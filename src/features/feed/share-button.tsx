@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { getRandomPastelColor } from "@/components/utils/utils";
+import { getRandomPastelColor } from "@/components/shared/get-relative-time";
 
 interface ShareButtonProps {
   title: string;
@@ -25,4 +25,3 @@ const ShareButton = function ({ title, children }: ShareButtonProps) {
 };
 
 export default ShareButton;
-

@@ -3,7 +3,6 @@ import { lazy, Suspense } from "react";
 
 import { useContext } from "react";
 import { AuthContext } from "@/firebase/auth/auth-context";
-import Spinner from "@/components/ui/spinner";
 
 const LazyWelcomePage = lazy(() => import("@/pages/welcome-page"));
 const LazyFeedsPage = lazy(() => import("@/pages/feeds-page"));
@@ -16,15 +15,13 @@ const LazyEditProfilePage = lazy(() => import("@/pages/edit-profile-page"));
 
 const PageNotFound = lazy(() => import("@/pages/not-found"));
 
+import Loading from "@/components/ui/Loading";
+
 const AppRoutes = function () {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <Spinner />
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
@@ -32,7 +29,7 @@ const AppRoutes = function () {
       <Route
         path="/"
         element={
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             {!user ? <LazyWelcomePage /> : <Navigate to="/feeds" />}
           </Suspense>
         }
@@ -40,7 +37,7 @@ const AppRoutes = function () {
       <Route
         path="/auth"
         element={
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             {!user ? <LazyAuthPage /> : <Navigate to="/feeds" />}
           </Suspense>
         }
@@ -48,7 +45,7 @@ const AppRoutes = function () {
       <Route
         path="/feeds"
         element={
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             {user ? <LazyFeedsPage /> : <Navigate to="/" />}
           </Suspense>
         }
@@ -56,7 +53,7 @@ const AppRoutes = function () {
       <Route
         path="/createPost"
         element={
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             {user ? <LazyCreateNewPost /> : <Navigate to="/" />}
           </Suspense>
         }
@@ -64,7 +61,7 @@ const AppRoutes = function () {
       <Route
         path="/profile"
         element={
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             {user ? <LazyProfilePage /> : <Navigate to="/" />}
           </Suspense>
         }
@@ -72,7 +69,7 @@ const AppRoutes = function () {
       <Route
         path="/editProfile"
         element={
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             {user ? <LazyEditProfilePage /> : <Navigate to="/" />}
           </Suspense>
         }
@@ -80,7 +77,7 @@ const AppRoutes = function () {
       <Route
         path="/*"
         element={
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             {!user ? <Navigate to="/" /> : <PageNotFound />}
           </Suspense>
         }

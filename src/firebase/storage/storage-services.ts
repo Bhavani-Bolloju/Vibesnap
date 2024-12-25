@@ -6,6 +6,7 @@ export const uploadImages = async function (
   imageFiles: File[],
   folder: string = "posts"
 ) {
+
   const imageUpload = imageFiles.map(async (image, index) => {
     const imageRef = ref(storage, `${folder}/${Date.now()}_${index}`);
     await uploadBytes(imageRef, image);

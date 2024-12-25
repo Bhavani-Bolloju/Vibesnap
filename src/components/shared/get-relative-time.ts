@@ -1,6 +1,6 @@
 import { isYesterday, formatDistanceToNow } from "date-fns";
 
-export const getRelativeTime = (date: Date) => {
+const getRelativeTime = (date: Date) => {
   if (isYesterday(date)) return "Yesterday";
   return formatDistanceToNow(date, { addSuffix: true });
 };
@@ -14,3 +14,4 @@ export function getRandomPastelColor() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
+export default getRelativeTime;

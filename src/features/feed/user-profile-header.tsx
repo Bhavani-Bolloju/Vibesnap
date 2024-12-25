@@ -21,7 +21,12 @@ const UserProfileHeader = function () {
       <div className="grid grid-cols-profile gap-x-3 max-sm:gap-x-1 grid-rows-2 h-12 content-center items-center">
         <div className="w-[70px] h-[70px] max-sm:w-[60px] max-sm:h-[60px] rounded-full overflow-hidden col-start-1 col-end-2 row-span-2 border-2 bg-gray-300">
           {user?.profileImage && typeof user?.profileImage === "string" ? (
-            <LazyLoad src={user?.profileImage} alt="profile" />
+            <LazyLoad
+              src={user?.profileImage}
+              alt="profile"
+              width={80}
+              height={80}
+            />
           ) : (
             <div className="flex items-center justify-center uppercase w-full h-full">
               {user?.name[0][0]}

@@ -27,6 +27,7 @@ import Spinner from "@/components/ui/spinner";
 
 import { useNavigate } from "react-router";
 
+import resizeImagesFileHandler from "@/components/shared/resize-image-handler";
 const CreateNewPost = function () {
   const [multiSelect, setMultiSelect] = useState(false);
   // const [capturedImage, setCapturedImage] = useState<string | null>(null);
@@ -41,12 +42,14 @@ const CreateNewPost = function () {
 
   const navigate = useNavigate();
 
-  const filesHandler = function (files: File[]) {
+  const filesHandler = async function (files: File[]) {
+    const resizedImages = await resizeImagesFileHandler(files);
+
     setFiles((prev) => {
       if (multiSelect) {
-        return prev ? [...prev, ...files] : files;
+        return prev ? [...prev, ...resizedImages] : files;
       } else {
-        return files;
+        return resizedImages;
       }
     });
   };

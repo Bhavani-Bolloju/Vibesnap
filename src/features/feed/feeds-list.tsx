@@ -11,8 +11,6 @@ import { FirebaseError } from "firebase/app";
 
 import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
 
-import Spinner from "@/components/ui/spinner";
-
 interface FetchPostsProps {
   media: { url: string; type: string }[];
   timestamp: number;
@@ -39,12 +37,11 @@ const FeedsList = function () {
   const [reachedEnd, setReachedEnd] = useState<boolean>(false);
 
   const { ref, inView } = useInView({
-    threshold: 0,
+    threshold: 0.8,
     triggerOnce: false,
     delay: 500,
     root: null
   });
-
 
   useEffect(() => {
     const fetchPosts = async function (

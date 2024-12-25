@@ -9,7 +9,7 @@ interface VideoPlayProp {
 
 const VideoAutoPlay = function ({ src, type }: VideoPlayProp) {
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.8,
     delay: 500,
     triggerOnce: false
   });
@@ -64,4 +64,3 @@ const VideoAutoPlay = function ({ src, type }: VideoPlayProp) {
 };
 
 export default VideoAutoPlay;
-
