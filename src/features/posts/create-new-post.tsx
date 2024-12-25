@@ -44,7 +44,7 @@ const CreateNewPost = function () {
 
   const filesHandler = async function (files: File[]) {
     console.log(files);
-    const resizedImages = await resizeImagesFileHandler(files);
+    const resizedImages = await resizeImagesFileHandler(files, 600, 600);
 
     setFiles((prev) => {
       if (multiSelect) {
