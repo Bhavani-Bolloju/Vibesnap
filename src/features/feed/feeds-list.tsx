@@ -11,6 +11,8 @@ import { FirebaseError } from "firebase/app";
 
 import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
 
+import Spinner from "@/components/ui/spinner";
+
 interface FetchPostsProps {
   media: { url: string; type: string }[];
   timestamp: number;
@@ -43,6 +45,7 @@ const FeedsList = function () {
     root: null
   });
 
+
   useEffect(() => {
     const fetchPosts = async function (
       doc: QueryDocumentSnapshot<DocumentData> | null,
@@ -52,8 +55,6 @@ const FeedsList = function () {
         setIsLoading(true);
 
         const res = await fetchPostsOnScroll(doc, limit);
-
-        console.log(res);
 
         if (res) {
           //
