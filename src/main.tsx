@@ -7,7 +7,7 @@ import { ToastContainer, Slide } from "react-toastify";
 import { BrowserRouter } from "react-router";
 import AuthProvider from "./firebase/auth/auth-provider";
 // import AppRoutes from "./routes/app-routes";
-import AppPage from "./app-page";
+import AppPage from "./App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

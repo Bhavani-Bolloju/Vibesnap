@@ -29,7 +29,12 @@ const UserProfile = function () {
       </button>
       <div className="h-[250px] max-sm:h-[180px] bg-gray-200 overflow-hidden">
         {user?.bannerImage && typeof user?.bannerImage === "string" && (
-          <LazyLoad src={user?.bannerImage} alt="banner" />
+          <LazyLoad
+            src={user?.bannerImage}
+            alt="banner"
+            width={1500}
+            height={300}
+          />
         )}
       </div>
       <div className="h-[150px] overflow-hidden w-[150px] max-sm:h-[100px] max-sm:w-[100px] bg-gray-200 rounded-full -mt-16 ml-8 max-sm:-mt-10 ">

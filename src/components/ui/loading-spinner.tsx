@@ -1,6 +1,6 @@
 import Spinner from "./spinner";
 
-const Loading = function () {
+const LoadingSpinner = function () {
   return (
     <div className="h-screen flex items-center justify-center">
       <Spinner />
@@ -8,5 +8,5 @@ const Loading = function () {
   );
 };
 
-export default Loading;
+export default LoadingSpinner;
 
