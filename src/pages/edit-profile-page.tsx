@@ -22,6 +22,8 @@ import { updateUserProfile } from "@/firebase/database/db-services";
 
 import { toastError, toastSuccess } from "@/components/ui/toast";
 
+import resizeImagesFileHandler from "@/components/shared/resize-image-handler";
+
 const EditProfilePage = function () {
   const user = useUser();
 
@@ -47,13 +49,20 @@ const EditProfilePage = function () {
 
   const navigate = useNavigate();
 
-  const bannerUploadHandler = function (file: File[]) {
-    console.log(file, file[0] instanceof File);
-    setProfileDetails((prev) => ({ ...prev, bannerImage: file }));
+  const bannerUploadHandler = async function (file: File[]) {
+    const resizedImage = await resizeImagesFileHandler(file, 1500, 500);
+
+    // console.log(resizedImage, file, "banner");
+
+    setProfileDetails((prev) => ({ ...prev, bannerImage: resizedImage }));
   };
 
-  const profileUploadHandler = function (file: File[]) {
-    setProfileDetails((prev) => ({ ...prev, profileImage: file }));
+  const profileUploadHandler = async function (file: File[]) {
+    const resizedImage = await resizeImagesFileHandler(file, 300, 300);
+
+    // console.log(resizedImage, file, "profile");
+
+    setProfileDetails((prev) => ({ ...prev, profileImage: resizedImage }));
   };
 
   const inputNameHandler = function (e: React.ChangeEvent<HTMLInputElement>) {

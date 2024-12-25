@@ -7,7 +7,9 @@ const UserPosts = function ({ posts }: UserPostsProp) {
     <div>
       <h4 className="font-karla font-semibold text-lg mb-2">My posts</h4>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 w-full h-full gap-5">
-        {posts &&
+        {posts && posts.length <= 0 ? (
+          <div className="text-primary/80">no posts</div>
+        ) : (
           posts?.map((post, i) => {
             const firstPost = post[0];
             return (
@@ -40,7 +42,8 @@ const UserPosts = function ({ posts }: UserPostsProp) {
                 </span>
               </div>
             );
-          })}
+          })
+        )}
       </div>
     </div>
   );

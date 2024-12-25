@@ -106,11 +106,6 @@ const FeedsList = function () {
 
       <div className="h-5 w-full flex-end" ref={ref}></div>
 
-      {reachedEnd && (
-        <div className="text-center font-karla font-semibold text-xl mb-5">
-          That's it folks!!!
-        </div>
-      )}
       {error && (
         <div className="bg-red-50 text-center font-karla font-semibold text-2xl">
           {error}

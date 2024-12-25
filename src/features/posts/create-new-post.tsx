@@ -43,6 +43,7 @@ const CreateNewPost = function () {
   const navigate = useNavigate();
 
   const filesHandler = async function (files: File[]) {
+    console.log(files);
     const resizedImages = await resizeImagesFileHandler(files);
 
     setFiles((prev) => {
