@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router";
 import AuthProvider from "./firebase/auth/auth-provider";
 // import AppRoutes from "./routes/app-routes";
 import AppPage from "./App";
-import "@/styles/app.css";
+import "@/styles/index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
