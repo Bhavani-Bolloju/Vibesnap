@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Skeleton } from "../ui/skeleton";
 
+
 interface LazyLoadProps {
   src: string;
   alt: string;

@@ -1,4 +1,5 @@
-import { isYesterday, formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
+import { isYesterday } from "date-fns/isYesterday";
 
 const getRelativeTime = (date: Date) => {
   if (isYesterday(date)) return "Yesterday";
