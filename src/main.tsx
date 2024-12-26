@@ -1,6 +1,5 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
 
 import { ToastContainer, Slide } from "react-toastify";
 
@@ -8,6 +7,7 @@ import { BrowserRouter } from "react-router";
 import AuthProvider from "./firebase/auth/auth-provider";
 // import AppRoutes from "./routes/app-routes";
 import AppPage from "./App";
+import "@/styles/app.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
