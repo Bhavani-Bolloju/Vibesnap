@@ -16,8 +16,8 @@ const LazyLoad = function ({
   height = 400
 }: LazyLoadProps) {
   const { ref, inView } = useInView({
-    threshold: 0.8,
-    delay: 500,
+    threshold: 0.5,
+    delay: 2000,
     triggerOnce: true
   });
 
@@ -38,7 +38,6 @@ const LazyLoad = function ({
           height={height}
           alt={alt}
           className="w-full h-full object-cover block"
-          
         />
       ) : (
         <Skeleton className="w-full h-full" />

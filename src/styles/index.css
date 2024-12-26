@@ -30,3 +30,43 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+@font-face {
+  font-display: swap;
+  font-family: "Kumbh Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/kumbh-sans-v22-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Kumbh Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/kumbh-sans-v22-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/karla-v31-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/karla-v31-latin-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/karla-v31-latin-800.woff2") format("woff2");
+}
