@@ -14,7 +14,7 @@ import Clipboard from "./copy-to-clipboard";
 import ShareDialogContent from "./share-dialog-content";
 
 const SharePost = function () {
-  const shareURL = "www.google.com";
+  const shareURL = "https://vibesnap-161224.web.app/";
 
   return (
     <Dialog>
