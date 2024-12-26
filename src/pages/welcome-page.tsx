@@ -19,7 +19,7 @@ const WelcomePage = function () {
       <div className="w-full absolute top-[50vh] bg-white h-[45vh] rounded-tr-[100px] rounded-tl-[100px] ">
         <div className="py-10  flex items-center flex-col">
           <h1 className="flex items-center gap-2">
-            <img src={logo} alt="" />
+            <img src={logo} alt="" width={100} height={100} />
             <span className="font-karla text-[28px] font-semibold">
               Vibespan
             </span>

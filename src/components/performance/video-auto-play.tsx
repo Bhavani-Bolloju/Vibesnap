@@ -9,8 +9,8 @@ interface VideoPlayProp {
 
 const VideoAutoPlay = function ({ src, type }: VideoPlayProp) {
   const { ref, inView } = useInView({
-    threshold: 0.8,
-    delay: 500,
+    threshold: 0.2,
+    delay: 200,
     triggerOnce: false
   });
 
