@@ -16,38 +16,38 @@ const Gallery = function () {
   return (
     <div className="gallery">
       <figure className="text-5xl text-center font-bold col-start-1 col-end-3 row-start-1 row-end-4">
-        <LazyLoad src={img3} alt="" width={400} height={400} />
+        <LazyLoad src={img3} alt="" width={400} height={400} delay={500} />
       </figure>
       <figure className="text-5xl text-center font-bold col-start-3 col-end-4 row-start-1 row-end-4">
-        <LazyLoad src={img13} alt="" width={400} height={400} />
+        <LazyLoad src={img13} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold  col-start-1 col-end-2 row-start-4 row-span-2 ">
-        <LazyLoad src={img1} alt="" width={400} height={400} />
+        <LazyLoad src={img1} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold col-start-2 col-end-4 row-start-4 row-span-2">
-        <LazyLoad src={img15} alt="" width={400} height={400} />
+        <LazyLoad src={img15} alt="" width={400} height={400} delay={500}/>
       </figure>
 
       <figure className="text-5xl text-center font-bold  col-start-4 col-end-6 row-start-3 row-end-6 max-sm:hidden">
-        <LazyLoad src={img14} alt="" width={400} height={400} />
+        <LazyLoad src={img14} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold  col-start-4 col-end-6 row-start-1 row-end-3 max-sm:hidden">
-        <LazyLoad src={img2} alt="" width={400} height={400} />
+        <LazyLoad src={img2} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold  col-start-6 col-end-7 row-start-1 row-end-3 max-lg:hidden">
-        <LazyLoad src={img7} alt="" width={400} height={400} />
+        <LazyLoad src={img7} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold  col-start-6 col-end-7 row-start-3 row-end-4 max-lg:hidden">
-        <LazyLoad src={img8} alt="" width={400} height={400} />
+        <LazyLoad src={img8} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold  col-start-7 col-end-9 row-start-1 row-end-4  max-lg:hidden">
-        <LazyLoad src={img9} alt="" width={400} height={400} />
+        <LazyLoad src={img9} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold col-start-6 col-end-8 row-start-4 row-end-6 max-lg:hidden">
-        <LazyLoad src={img6} alt="" width={400} height={400} />
+        <LazyLoad src={img6} alt="" width={400} height={400} delay={500}/>
       </figure>
       <figure className="text-5xl text-center font-bold  col-start-8 col-end-9 row-start-4 row-end-6 max-lg:hidden">
-        <LazyLoad src={img11} alt="" width={400} height={400} />
+        <LazyLoad src={img11} alt="" width={400} height={400} delay={500}/>
       </figure>
     </div>
   );

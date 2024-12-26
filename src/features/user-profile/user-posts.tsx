@@ -23,6 +23,7 @@ const UserPosts = function ({ posts }: UserPostsProp) {
                           alt=""
                           width={400}
                           height={400}
+                          delay={1000}
                         />
                       </div>
                     ) : (

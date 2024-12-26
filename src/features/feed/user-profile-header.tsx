@@ -26,6 +26,7 @@ const UserProfileHeader = function () {
               alt="profile"
               width={80}
               height={80}
+              delay={1000}
             />
           ) : (
             <div className="flex items-center justify-center uppercase w-full h-full">

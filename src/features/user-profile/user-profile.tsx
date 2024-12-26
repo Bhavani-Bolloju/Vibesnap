@@ -34,6 +34,8 @@ const UserProfile = function () {
             alt="banner"
             width={1500}
             height={300}
+
+            delay={1000}
           />
         )}
       </div>
@@ -44,6 +46,7 @@ const UserProfile = function () {
             alt="profile"
             width={400}
             height={400}
+            delay={1000}
           />
         )}
       </div>

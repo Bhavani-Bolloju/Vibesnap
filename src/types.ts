@@ -19,10 +19,8 @@ export interface FeedProps {
   text: string;
   profileImage: string | null | File[];
 
-
+  delay?: number;
 }
-
-
 
 export interface EditProfileProps {
   bio?: string;

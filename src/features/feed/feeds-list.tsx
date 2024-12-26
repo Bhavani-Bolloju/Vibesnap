@@ -102,7 +102,12 @@ const FeedsList = function () {
             </React.Fragment>
           ))}
       </div>
-      <div>{data && data.map((feed, i) => <FeedCard key={i} {...feed} />)}</div>
+      <div>
+        {data &&
+          data.map((feed, i) => (
+            <FeedCard key={i} {...feed} delay={i < 2 ? 200 : 2500} />
+          ))}
+      </div>
 
       <div className="h-5 w-full flex-end" ref={ref}></div>
 

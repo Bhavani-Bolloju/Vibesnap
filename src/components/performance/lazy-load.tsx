@@ -8,17 +8,19 @@ interface LazyLoadProps {
   alt: string;
   width?: number;
   height?: number;
+  delay?: number;
 }
 
 const LazyLoad = function ({
   src,
   alt = "",
   width = 400,
-  height = 400
+  height = 400,
+  delay = 2000,
 }: LazyLoadProps) {
   const { ref, inView } = useInView({
     threshold: 0.3,
-    delay: 200,
+    delay: delay,
     triggerOnce: true
   });
 
