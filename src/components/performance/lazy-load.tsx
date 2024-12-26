@@ -6,7 +6,7 @@ interface LazyLoadProps {
   src: string;
   alt: string;
   width?: number;
-  height: number;
+  height?: number;
 }
 
 const LazyLoad = function ({
@@ -38,6 +38,7 @@ const LazyLoad = function ({
           height={height}
           alt={alt}
           className="w-full h-full object-cover block"
+          
         />
       ) : (
         <Skeleton className="w-full h-full" />

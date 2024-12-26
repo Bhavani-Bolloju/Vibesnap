@@ -1,12 +1,21 @@
-import Gallery from "@/components/welcome/gallery";
+// import Gallery from "@/components/welcome/gallery";
 import GoogleLogin from "@/features/auth/google-login";
 import logo from "../../public/vibespan.svg";
 import { Link } from "react-router";
 
+import { Suspense, lazy } from "react";
+
+const GalleryComponent = lazy(() => import("@/components/welcome/gallery"));
+
+import LoadingSpinner from "@/components/ui/loading-spinner";
+
 const WelcomePage = function () {
   return (
     <div className="m-auto relative h-screen">
-      <Gallery />
+      {/* <Gallery /> */}
+      <Suspense fallback={<LoadingSpinner />}>
+        <GalleryComponent />
+      </Suspense>
       <div className="w-full absolute top-[50vh] bg-white h-[45vh] rounded-tr-[100px] rounded-tl-[100px] ">
         <div className="py-10  flex items-center flex-col">
           <h1 className="flex items-center gap-2">
