@@ -1,50 +1,87 @@
-# React + TypeScript + Vite
+## Application overview
+Vibesnap is a social media feed application that allows users to register using Google or an email address, post updates with simple text or multimedia content such as photos and videos, and edit their profiles
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Standards and Tools
+**Project Standards** 
+- `Eslint` - Enforces coding standards.
+- `Prettier` - Ensures consistent code formatting.
+- `Typescript` - for static typing 
+- `Husky` - pre-commit and pre-push hooks
+- `absolute imports` - to simplify module imports
+- `file naming convention` - maintains consistency across the project
 
-Currently, two official plugins are available:
+**Tools**
+- `Tailwind` - framework for styling
+- `shadcn/ui` - Component library for pre-built UI elements
+- `react-toastify`- For notifications and alerts
+- `react-intersection-observer`- to implements lazy loading.
+- `react-webcam` - Captures images via webcam.
+- `react-dropzone` - Handles multimedia(images and video) uploads
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project structure
+```
+Directory structure:
+└── Bhavani-Bolloju-Vibesnap/
+    ├── index.html
+    └── src/
+        ├── main.tsx
+        ├── types.ts
+        ├── App.tsx
+        ├── fonts/
+        ├── assets/
+        ├── components/
+        │   ├── welcome/
+        │   ├── performance/
+        │   ├── shared/
+        │   ├── ui/
+        │   └── posts/
+        ├── lib/
+        │   └── utils.ts
+        ├── styles/
+        │   └── index.css
+        ├── firebase/
+        │   ├── auth/
+        │   ├── database/
+        │   ├── config.ts
+        │   └── storage/
+        ├── hooks/
+        ├── routes/
+        │   └── app-routes.tsx
+        ├── pages/
+        ├── features/
+        │   ├── auth/
+        │   ├── posts/
+        │   ├── user-profile/
+        │   └── feed/
+        └── vite-env.d.ts
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Challenges faced
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Extended features
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Exciting things about the project
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
