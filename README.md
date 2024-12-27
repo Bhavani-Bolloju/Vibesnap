@@ -10,13 +10,16 @@ Vibesnap is a social media feed application that allows users to register using 
 - `absolute imports` - to simplify module imports
 - `file naming convention` - maintains consistency across the project
 
-**Tools**
+**Tools and Libraries**
 - `Tailwind` - framework for styling
 - `shadcn/ui` - Component library for pre-built UI elements
+- `react-routers` - to build Single page application
 - `react-toastify`- For notifications and alerts
 - `react-intersection-observer`- to implements lazy loading.
 - `react-webcam` - Captures images via webcam.
 - `react-dropzone` - Handles multimedia(images and video) uploads
+- `react-image-file-resizer` - to optimize uploaded images
+- `firebase` - for authentication(google/email-based login), database(store user and post information) and storage(handle multimedia content)
 
 ## Project structure
 ```
@@ -57,6 +60,32 @@ Directory structure:
 ```
 
 ## Challenges faced
+
+#### File structure and orgnization
+- **Challenge**: Adding an appropriate file and folder structure for better organization of the code.
+- **Solution**: created separate folders for each `feature`, along with a `component` folder for shared components. Each feature folder contains code specific to its functionality.
+- **Outcomes**: This ensured clean and well organized structure, improved code readability and made code easier to write and maintain. 
+
+#### Form reset
+- **Challenge**: To eliminate duplicate code, I used a single file for both login and signup forms, allowing users to toggle between them. However, I needed to ensure that switching between forms reset the input values to avoid persisting data from one form to the other.
+- **Solution**: Found that React's `key` property can reset a component’s state, refactored the form into a separate component and assigned a unique key each time the user toggled between login and signup.
+- **Outcomes**: Successfully avoided duplicate code by reusing the same form component, ensuring proper state reset when switching between login and signup states.
+
+#### Firebase user auth value returning null
+- **Challenge**: 
+- **Solution**:
+- **Outcomes**:
+
+#### Adding post feature
+- **Challenge**:
+- **Solution**:
+- **Outcomes**:
+
+
+
+
+
+## Optimization techniques
 
 ## Extended features
 
