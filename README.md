@@ -1,13 +1,13 @@
-## Application overview
+## 💻 Application overview
 Vibesnap is a social media feed application that allows users to register using Google or an email address, post updates with simple text or multimedia content such as photos and videos, and edit their profiles
 
-## Features
+## 🎨 Features
 - **User Authentication**: Allows users to register and log in using Google or email.
 - **Post Updates**: Users can post text updates, images, or videos.
 - **Profile Editing**: Users can edit their profiles and update information.
 - **Protected Routes**: Only authenticated users can access certain routes.
 
-## Project Standards and Tools
+## ⚙️ Project Standards and Tools
 **Project Standards** 
 - `Eslint` - Enforces coding standards.
 - `Prettier` - Ensures consistent code formatting.
@@ -27,7 +27,7 @@ Vibesnap is a social media feed application that allows users to register using 
 - `react-image-file-resizer` - to optimize uploaded images
 - `firebase` - for authentication(google/email-based login), database(store user and post information) and storage(handle multimedia content)
 
-## Project structure
+## 🏗️ Project structure
 ```
 Directory structure:
 └── Bhavani-Bolloju-Vibesnap/
@@ -65,7 +65,7 @@ Directory structure:
         └── vite-env.d.ts
 ```
 
-## Challenges faced
+## 💪 Challenges Faced
 
 #### File structure and orgnization
 - **Challenge**: Adding an appropriate file and folder structure for better organization of the code.
@@ -88,7 +88,7 @@ Directory structure:
 - **Outcomes**: Successfully implemented the `Add New Post` feature, allowing users to upload media content and create new posts.
 
 
-## Project Perfomance and Optimization Techniques
+## 🚅 Project Perfomance and Optimization Techniques
 - Implemented **code splitting** and used **React Lazy** for dynamic imports, loading components only when needed.
 - Compressed **Google Fonts** to the **WOFF2** format using `google-webfonts-helper` to reduce font file sizes.
 - Ran `npx depcheck` to identify and remove unused dependencies, reducing the overall payload.
@@ -97,13 +97,13 @@ Directory structure:
 - Used tools like **PageSpeed Insights** and **Lighthouse** to identify performance issues and optimize the application accordingly.
 
 
-## Overall experience
+## 🎊 Overall experience
 - Had the opportunity to work with the **Shadcn/UI** component library for the first time, and it was fantastic—easy to use and highly effective.
 - Reinforced best practices like **project structure**, enforcing **absolute imports**, and adhering to **file naming conventions** inspired by the `"bulletproof-react"` project.
 - Revisited the **grid layout** concept in greater depth to implement the gallery images on the welcome page.
 - Enjoyed working with new tools, particularly for **image uploads** and **webcam capture**, which made the development process fun and engaging
 
-## Future improvements
+## 💡 Future improvements
 - **Likes & Comments**: Add the ability for users to like and comment on posts.
 - **Dark Mode**: Implement a dark mode toggle.
 - **Post Editing**: Allow users to delete or edit their own posts.
@@ -111,7 +111,7 @@ Directory structure:
 - **Users Follow**: Allow users to follow other users and view their posts in a detail.
 
 
-## Installation Guide
+## 🪜 Installation Guide
 1. Clone the repository:
    ```
    git clone https://github.com/Bhavani-Bolloju/Vibesnap.git
@@ -141,8 +141,7 @@ Directory structure:
 
 
 
-
-
+------------------------------------------------------------------------------------------
 
 
 
